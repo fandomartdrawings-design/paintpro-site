@@ -71,7 +71,7 @@ export default function Comparison() {
             </table>
           </div>
           <p className="mt-3 text-[11.5px] text-slate-400 text-center">
-            ◐ = partial or paid add-on. Competitor capabilities and pricing summarized from public pricing pages, 2026 — always verify current plans.
+            ◐ = partial or available as a paid add-on. Competitor details reflect publicly published pricing as of 2026 — confirm current terms directly with each vendor.
           </p>
         </Reveal>
       </div>

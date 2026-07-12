@@ -5,8 +5,8 @@
 import React from "react";
 
 const COLS = [
-  { h: "Product", links: [["Features", "#features"], ["Compare", "#compare"], ["Savings", "#savings"], ["Pricing", "#pricing"], ["Mobile App", "#mobile"]] },
-  { h: "Company", links: [["Built by a Painter", "#story"], ["Contact", "#pricing"], ["Log In", "/paintpro/"]] },
+  { h: "Product", links: [["Features", "#features"], ["Compare", "#compare"], ["Why PaintPro", "#why-paintpro"], ["Savings", "#savings"], ["Pricing", "#pricing"], ["Mobile App", "#mobile"]] },
+  { h: "Company", links: [["Our Story", "#story"], ["Contact", "#pricing"], ["Log In", "/paintpro/"]] },
   { h: "Trust", links: [["Your data, your server", "#mobile"], ["Encrypted crew network", "#mobile"], ["No per-user fees", "#pricing"]] },
 ];
 
@@ -33,12 +33,12 @@ export default function Footer() {
             <span className="font-extrabold text-lg">Paint<span className="text-brand-soft">Pro</span></span>
           </div>
           <p className="mt-4 text-[13px] leading-relaxed text-white/50 max-w-xs">
-            Field management software built specifically for painting contractors —
-            by someone who still gets paint on his boots.
+            Field management software built specifically for painting contractors,
+            grounded in real experience running painting crews.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <span className="rounded-full border border-white/15 px-3 py-1 text-[10.5px] font-bold text-white/60">🔒 Encrypted peer-to-peer</span>
-            <span className="rounded-full border border-white/15 px-3 py-1 text-[10.5px] font-bold text-white/60">🎨 Built for painters, by a painter</span>
+            <span className="rounded-full border border-white/15 px-3 py-1 text-[10.5px] font-bold text-white/60">🎨 Built for the painting trade</span>
           </div>
         </div>
         {COLS.map(c => (

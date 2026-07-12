@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Reveal from "./Reveal.jsx";
+import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion.js";
 
 function Timer() {
   const [s, setS] = useState(13520);
@@ -15,18 +16,19 @@ function Timer() {
 
 const POINTS = [
   { icon: "📱", title: "A real field app", text: "Native Android app your crew installs once. Big buttons, 16px inputs, bottom tab bar — built for gloved thumbs on ladders, not desks." },
-  { icon: "🔒", title: "Private crew network", text: "Devices connect over an encrypted peer-to-peer network (ZeroTier) straight to your server. Your job data never sits in someone else's cloud." },
+  { icon: "🔒", title: "Private, encrypted crew network", text: "Devices connect over a private encrypted network (ZeroTier) straight to your own server — your job data never sits in someone else's cloud." },
   { icon: "📷", title: "Photos from the field", text: "Before / progress / after shots straight from the phone camera to the job record." },
   { icon: "🧭", title: "One-tap everything", text: "Call the customer, get directions, clock in, check the weather call — all from the job card." },
 ];
 
 export default function MobilePreview() {
+  const reduced = usePrefersReducedMotion();
   return (
     <section id="mobile" className="py-20 md:py-28 bg-slate-50 dark:bg-[#0a1322] overflow-hidden">
       <div className="mx-auto max-w-6xl px-5 grid lg:grid-cols-2 gap-14 items-center">
         {/* Phone mockup */}
         <Reveal className="flex justify-center lg:justify-end order-2 lg:order-1">
-          <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut" }}
+          <motion.div animate={reduced ? undefined : { y: [0, -10, 0] }} transition={reduced ? undefined : { repeat: Infinity, duration: 5.5, ease: "easeInOut" }}
             className="relative w-[290px] rounded-[38px] border-[10px] border-navy-deep bg-navy-deep shadow-[0_40px_90px_rgba(2,48,71,.4)]">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 rounded-b-2xl bg-navy-deep z-10" />
             <div className="rounded-[28px] overflow-hidden bg-[#F4F9FC] dark:bg-[#091424]">
@@ -42,7 +44,7 @@ export default function MobilePreview() {
                 {/* live clock card */}
                 <div className="rounded-xl bg-white dark:bg-[#0f1a2e] p-3 border-l-4 border-mint shadow-sm">
                   <div className="flex items-center gap-1.5 text-[8.5px] font-extrabold uppercase tracking-wider text-mint">
-                    <motion.span animate={{ opacity: [1, 0.25, 1] }} transition={{ repeat: Infinity, duration: 1.4 }} className="w-1.5 h-1.5 rounded-full bg-mint" />
+                    <motion.span animate={reduced ? undefined : { opacity: [1, 0.25, 1] }} transition={reduced ? undefined : { repeat: Infinity, duration: 1.4 }} className="w-1.5 h-1.5 rounded-full bg-mint" />
                     On the clock
                   </div>
                   <div className="text-[26px] font-black text-navy dark:text-white mt-0.5"><Timer /></div>

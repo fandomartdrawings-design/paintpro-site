@@ -4,6 +4,7 @@
  */
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion.js";
 
 // Live count-up timer for the mockup's "on the clock" card
 function Timer() {
@@ -20,6 +21,7 @@ const fadeUp = (d = 0) => ({
 });
 
 export default function Hero({ onContact }) {
+  const reduced = usePrefersReducedMotion();
   return (
     <section id="top" className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
       {/* soft background washes */}
@@ -95,7 +97,7 @@ export default function Hero({ onContact }) {
                 <div className="rounded-xl bg-white dark:bg-[#0f1a2e] p-3.5 shadow-sm border-l-4 border-mint flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1.5 text-[9.5px] font-extrabold uppercase tracking-wider text-mint">
-                      <motion.span animate={{ opacity: [1, 0.25, 1] }} transition={{ repeat: Infinity, duration: 1.4 }} className="w-1.5 h-1.5 rounded-full bg-mint" />
+                      <motion.span animate={reduced ? undefined : { opacity: [1, 0.25, 1] }} transition={reduced ? undefined : { repeat: Infinity, duration: 1.4 }} className="w-1.5 h-1.5 rounded-full bg-mint" />
                       On the clock · Mike R.
                     </div>
                     <div className="text-[11px] text-slate-400 mt-0.5">Hendricks — Exterior Repaint</div>
@@ -118,11 +120,11 @@ export default function Hero({ onContact }) {
           </div>
 
           {/* floating chips */}
-          <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+          <motion.div animate={reduced ? undefined : { y: [0, -8, 0] }} transition={reduced ? undefined : { repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
             className="absolute -left-4 top-16 rounded-xl bg-white dark:bg-[#0f1a2e] shadow-xl border border-slate-100 dark:border-[#1a2744] px-3.5 py-2.5 text-[11.5px] font-bold text-navy dark:text-white">
             🧮 14 gal Duration · 2 coats
           </motion.div>
-          <motion.div animate={{ y: [0, 9, 0] }} transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut", delay: 0.6 }}
+          <motion.div animate={reduced ? undefined : { y: [0, 9, 0] }} transition={reduced ? undefined : { repeat: Infinity, duration: 5.2, ease: "easeInOut", delay: 0.6 }}
             className="absolute -right-3 bottom-10 rounded-xl bg-white dark:bg-[#0f1a2e] shadow-xl border border-slate-100 dark:border-[#1a2744] px-3.5 py-2.5 text-[11.5px] font-bold text-navy dark:text-white">
             💳 Invoice paid — <span className="text-mint">$3,850</span>
           </motion.div>

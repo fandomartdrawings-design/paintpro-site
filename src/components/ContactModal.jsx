@@ -53,8 +53,8 @@ export default function ContactModal({ open, onClose }) {
             {state === "done" ? (
               <div className="px-7 pb-8 pt-4">
                 <p className="text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-300">
-                  Thanks, <b>{form.name.split(" ")[0]}</b>! We got your info and we'll reach out
-                  shortly to get your company set up. Keep the brushes wet. 🖌️
+                  Thanks, <b>{form.name.split(" ")[0]}</b>! We've got your information and
+                  will reach out shortly to get your company set up.
                 </p>
                 <button onClick={close} className="mt-6 w-full rounded-xl bg-brand py-3 text-[14px] font-bold text-white">Done</button>
               </div>
@@ -95,7 +95,7 @@ export default function ContactModal({ open, onClose }) {
                 </div>
                 <div>
                   <label className={LB}>Anything we should know?</label>
-                  <textarea rows={3} className={`${IN} resize-y`} value={form.message} onChange={set("message")} placeholder="Currently using Jobber, spreadsheets, a whiteboard…" />
+                  <textarea rows={3} className={`${IN} resize-y`} value={form.message} onChange={set("message")} placeholder="What are you using today, and what's not working?" />
                 </div>
                 {/* honeypot — bots fill it, humans never see it */}
                 <input tabIndex={-1} autoComplete="off" value={form.website} onChange={set("website")} className="absolute -left-[9999px]" aria-hidden="true" />

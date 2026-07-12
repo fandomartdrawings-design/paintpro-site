@@ -7,20 +7,22 @@ import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
 import Features from "./components/Features.jsx";
 import Comparison from "./components/Comparison.jsx";
+import WhyPaintPro from "./components/WhyPaintPro.jsx";
 import SavingsCalculator from "./components/SavingsCalculator.jsx";
 import Pricing from "./components/Pricing.jsx";
 import MobilePreview from "./components/MobilePreview.jsx";
 import ContactModal from "./components/ContactModal.jsx";
 import Footer from "./components/Footer.jsx";
 import Reveal from "./components/Reveal.jsx";
+import AmbientBackground from "./components/AmbientBackground.jsx";
 
 /* ── Problem → Solution ── */
 const OLD_WAY = [
-  ["📝", "Estimates on carbon paper that never match the invoice"],
-  ["🤔", "Guessing gallons — then a second trip to the paint store"],
+  ["📝", "Handwritten estimates that never quite match the final invoice"],
+  ["🤔", "Guessing gallons, then a second trip to the paint store"],
   ["🧢", "Scheduling by group text and a whiteboard"],
-  ["🌧️", "Loading the sprayer, driving out, finding rain"],
-  ["💸", "Chasing checks for weeks after the job's done"],
+  ["🌧️", "Loading the sprayer and driving out, only to find rain"],
+  ["💸", "Chasing payment for weeks after the job is finished"],
 ];
 const NEW_WAY = [
   ["📋", "Line-item estimates that become invoices in one tap"],
@@ -151,12 +153,14 @@ export default function App() {
 
   return (
     <div className="bg-white dark:bg-[#070d1a] text-ink dark:text-slate-200 antialiased">
+      <AmbientBackground />
       <Nav dark={dark} onToggleDark={() => setDark(d => !d)} onContact={() => setContact(true)} />
       <main>
         <Hero onContact={() => setContact(true)} />
         <ProblemSolution />
         <Features />
         <Comparison />
+        <WhyPaintPro />
         <SavingsCalculator />
         <Pricing onContact={() => setContact(true)} />
         <Testimonials />

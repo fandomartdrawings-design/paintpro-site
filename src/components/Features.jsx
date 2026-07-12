@@ -24,7 +24,7 @@ const FEATURES = [
       "Per-surface math: walls, ceilings, trim, doors — each with its own spread rate",
       "Two-coat and primer logic built in",
       "Pulls square footage from your estimates so numbers stay consistent",
-      "No more 'grab an extra five just in case'",
+      "Waste factor built in — order what the job needs, not a guess",
     ],
   },
   {
@@ -39,11 +39,11 @@ const FEATURES = [
   },
   {
     icon: "🗺️", accent: "#7B61FF", title: "Property Boundary Mapping",
-    blurb: "Draw the actual work area on satellite imagery. Everyone knows exactly which fence, which wall, which side.",
+    blurb: "Mark the exact work area on satellite imagery, so every crew member knows which fence, which wall, which side — before they arrive.",
     details: [
-      "Satellite view with polygon drawing tools",
-      "Boundaries saved per job — crew sees them in the field",
-      "Addresses geocode automatically from the customer record",
+      "Satellite view with on-screen boundary drawing",
+      "Boundaries saved to the job and visible to the crew in the field",
+      "Job addresses geocoded automatically from the customer record",
     ],
   },
   {
@@ -66,20 +66,20 @@ const FEATURES = [
   },
   {
     icon: "⛅", accent: "#8ECAE6", title: "Weather-Smart Scheduling",
-    blurb: "Every scheduled job is checked against its own address for the next 7 days. Know before you load the sprayer.",
+    blurb: "Every scheduled job is checked against a 7-day forecast for its own address — know before you load the sprayer, not after.",
     details: [
-      "Per-job forecasts — not just your city, the customer's street",
-      "Good to Paint / Paint at Risk / Do Not Paint calls per job",
-      "Wind and rain alerts with badge notifications",
+      "Forecasts pulled per job address, not just your city",
+      "Clear Good to Paint / At Risk / Do Not Paint calls for each job",
+      "Wind and rain alerts flagged directly on the job card",
     ],
   },
   {
     icon: "⏱", accent: "#FFB703", title: "Crew Time Clock",
-    blurb: "Tap your name, tap the job, you're on the clock — a live timer counting up. Fair lunch rules, weekly timesheets, CSV export.",
+    blurb: "One tap to clock in on the right job — live hours tracked automatically, down to the minute, for every crew member.",
     details: [
-      "Live count-up timers per crew member, per job",
-      "Honest lunch handling — skip lunch, keep your full time",
-      "Weekly paid-hours timesheet with one-click CSV for payroll",
+      "Real-time hours per crew member, per job, visible the moment they clock in",
+      "Fair, transparent lunch-break handling built into every timesheet",
+      "Weekly paid-hours summary with one-click CSV export for payroll",
     ],
   },
 ];

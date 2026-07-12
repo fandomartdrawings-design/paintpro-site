@@ -84,6 +84,7 @@ export default function Nav({ dark, onToggleDark, onContact }) {
             </AnimatePresence>
           </div>
           <a href="#compare" onClick={goToHash("#compare")} className={link}>Compare</a>
+          <a href="#why-paintpro" onClick={goToHash("#why-paintpro")} className={link}>Why PaintPro</a>
           <a href="#savings" onClick={goToHash("#savings")} className={link}>Savings</a>
           <a href="#pricing" onClick={goToHash("#pricing")} className={link}>Pricing</a>
           <a href="#mobile" onClick={goToHash("#mobile")} className={link}>Mobile App</a>
@@ -114,7 +115,7 @@ export default function Nav({ dark, onToggleDark, onContact }) {
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
             className="md:hidden overflow-hidden bg-white dark:bg-[#0f1a2e] border-t border-slate-100 dark:border-[#1a2744]">
             <div className="px-5 py-4 flex flex-col gap-1">
-              {[["#features", "Features"], ["#compare", "Compare"], ["#savings", "Savings"], ["#pricing", "Pricing"], ["#mobile", "Mobile App"]].map(([h, l]) => (
+              {[["#features", "Features"], ["#compare", "Compare"], ["#why-paintpro", "Why PaintPro"], ["#savings", "Savings"], ["#pricing", "Pricing"], ["#mobile", "Mobile App"]].map(([h, l]) => (
                 <a key={h} href={h} onClick={goToHash(h, true)} className="py-2.5 text-[15px] font-semibold text-navy dark:text-slate-200">{l}</a>
               ))}
               <div className="flex gap-3 pt-3 border-t border-slate-100 dark:border-[#1a2744] mt-2">
