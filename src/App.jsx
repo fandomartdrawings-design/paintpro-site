@@ -12,6 +12,7 @@ import SavingsCalculator from "./components/SavingsCalculator.jsx";
 import Pricing from "./components/Pricing.jsx";
 import MobilePreview from "./components/MobilePreview.jsx";
 import ContactModal from "./components/ContactModal.jsx";
+import ChatWidget from "./components/ChatWidget.jsx";
 import Footer from "./components/Footer.jsx";
 import Reveal from "./components/Reveal.jsx";
 import AmbientBackground from "./components/AmbientBackground.jsx";
@@ -169,6 +170,7 @@ export default function App() {
       </main>
       <Footer />
       <ContactModal open={contact} onClose={() => setContact(false)} />
+      <ChatWidget onContact={() => setContact(true)} />
     </div>
   );
 }
