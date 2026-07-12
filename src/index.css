@@ -1,0 +1,31 @@
+/**
+ * PaintPro Marketing Site
+ * Copyright © 2026 Ryan William Hill. All rights reserved.
+ */
+@import "tailwindcss";
+
+/* Class-based dark mode (html.dark), toggled by the nav switch */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand: #219EBC;
+  --color-brand-dark: #176D87;
+  --color-brand-soft: #8ECAE6;
+  --color-brand-tint: #DCEFF9;
+  --color-navy: #023047;
+  --color-navy-deep: #011C2A;
+  --color-mint: #10B981;
+  --color-amber: #FFB703;
+  --color-flame: #FB8500;
+  --color-ink: #0F172A;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); }
+
+::selection { background: #219EBC; color: #fff; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9px; }
+.dark ::-webkit-scrollbar-thumb { background: #1a2744; }

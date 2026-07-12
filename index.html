@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- Primary SEO -->
+    <title>PaintPro — Field Management Software Built for Painting Contractors</title>
+    <meta name="description" content="PaintPro is the all-in-one field app for painting companies: estimates that turn into invoices, a painting-specific inventory, paint calculator, crew time clock, Stripe payments, weather-smart scheduling, and property mapping. Flat pricing, unlimited crew, your data on your server." />
+    <meta name="keywords" content="painting contractor software, painter field management, paint estimate app, painting business app, crew time clock, paint calculator" />
+    <meta name="author" content="Ryan William Hill" />
+    <meta name="copyright" content="Copyright © 2026 Ryan William Hill. All rights reserved." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#023047" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PaintPro — Built for Painters, by a Painter" />
+    <meta property="og:description" content="Estimates, crews, inventory, payments, and weather-smart scheduling — one app your painting crew will actually use. Flat pricing. Unlimited users. Your data on your server." />
+    <meta property="og:image" content="./logo-mark-256.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="PaintPro — Field Management for Painting Contractors" />
+    <meta name="twitter:description" content="The painting-specific alternative to generic contractor software. Flat pricing, unlimited crew." />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PaintPro Field Manager",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, Android",
+      "description": "Field management software built specifically for painting contractors: estimates, invoicing, painting inventory, paint calculator, crew time clock, Stripe payments, weather alerts, and property boundary mapping.",
+      "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "USD" },
+      "author": { "@type": "Person", "name": "Ryan William Hill" }
+    }
+    </script>
+
+    <link rel="icon" href="./favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./logo-mark-256.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/index.css?v=20260711-site1" />
+
+    <!-- Apply saved theme before first paint (no flash) -->
+    <script>
+      try {
+        var t = localStorage.getItem("pps-dark");
+        if (t === "1" || (t === null && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <!-- Copyright © 2026 Ryan William Hill. All rights reserved. -->
+    <div id="root"></div>
+    <script type="module" src="./assets/index.js?v=20260711-site1"></script>
+  </body>
+</html>
