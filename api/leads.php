@@ -11,6 +11,28 @@
  */
 header('Content-Type: application/json');
 
+function sendLeadMail(string $to, string $subject, string $body, string $replyTo): bool {
+    $safeTo = filter_var($to, FILTER_VALIDATE_EMAIL);
+    if (!$safeTo) {
+        return false;
+    }
+
+    $headers = [
+        'MIME-Version: 1.0',
+        'Content-type: text/plain; charset=UTF-8',
+        'From: PaintPro Leads <no-reply@paintpro.local>',
+        'Reply-To: ' . $replyTo,
+        'X-Mailer: PHP/' . phpversion(),
+    ];
+
+    return @mail($safeTo, $subject, $body, implode("\r\n", $headers));
+}
+
+function logMailFailure(string $message): void {
+    $line = '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL;
+    @file_put_contents(__DIR__ . '/mail_failures.log', $line, FILE_APPEND);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['error' => 'POST only']);
@@ -79,7 +101,53 @@ if (!$stmt) {
 $stmt->bind_param('sssssss', $name, $company, $email, $phone, $crew, $message, $ip);
 
 if ($stmt->execute()) {
-    echo json_encode(['ok' => true, 'id' => $db->insert_id]);
+    $leadId = (int) $db->insert_id;
+
+    // Email notifications
+    // Set PAINTPRO_LEADS_TO in Apache/PHP env for owner notifications.
+    $ownerTo = getenv('PAINTPRO_LEADS_TO') ?: '';
+    $ownerSent = false;
+    $userSent = false;
+
+    if (filter_var($ownerTo, FILTER_VALIDATE_EMAIL)) {
+        $ownerSubject = 'New PaintPro lead #' . $leadId;
+        $ownerBody =
+            "New lead captured from paintpro-site\n\n" .
+            "Lead ID: {$leadId}\n" .
+            "Name: {$name}\n" .
+            "Company: {$company}\n" .
+            "Email: {$email}\n" .
+            "Phone: {$phone}\n" .
+            "Crew Size: {$crew}\n" .
+            "IP: {$ip}\n\n" .
+            "Message:\n{$message}\n";
+        $ownerSent = sendLeadMail($ownerTo, $ownerSubject, $ownerBody, $email);
+        if (!$ownerSent) {
+            logMailFailure('Owner mail failed for lead #' . $leadId . ' to ' . $ownerTo);
+        }
+    }
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $userSubject = 'PaintPro trial request received';
+        $firstName = trim(explode(' ', $name)[0] ?? $name);
+        $userBody =
+            "Hey {$firstName},\n\n" .
+            "Thanks for requesting a PaintPro free trial.\n" .
+            "We got your info and will follow up shortly.\n\n" .
+            "If you need anything now, reply to this email.\n\n" .
+            "- PaintPro Team\n";
+        $userSent = sendLeadMail($email, $userSubject, $userBody, $ownerTo ?: 'no-reply@paintpro.local');
+        if (!$userSent) {
+            logMailFailure('User mail failed for lead #' . $leadId . ' to ' . $email);
+        }
+    }
+
+    echo json_encode([
+        'ok' => true,
+        'id' => $leadId,
+        'email_sent_owner' => $ownerSent,
+        'email_sent_user' => $userSent,
+    ]);
 } else {
     http_response_code(500);
     echo json_encode(['error' => 'Could not save']);

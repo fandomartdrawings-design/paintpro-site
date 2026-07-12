@@ -24,6 +24,7 @@
 
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-sans); }
+[id] { scroll-margin-top: 88px; }
 
 ::selection { background: #219EBC; color: #fff; }
 ::-webkit-scrollbar { width: 6px; }

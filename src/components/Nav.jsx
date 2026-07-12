@@ -27,10 +27,27 @@ export default function Nav({ dark, onToggleDark, onContact }) {
 
   const link = "text-sm font-semibold text-navy/80 hover:text-brand dark:text-slate-300 dark:hover:text-brand-soft transition-colors";
 
+  const goToHash = (href, closeMenu = false) => (e) => {
+    if (!href || href[0] !== "#") {
+      if (closeMenu) setOpen(false);
+      return;
+    }
+
+    e.preventDefault();
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", href);
+    }
+    if (closeMenu) setOpen(false);
+    setDrop(false);
+  };
+
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all ${scrolled ? "bg-white/85 dark:bg-[#070d1a]/85 backdrop-blur-md shadow-[0_2px_20px_rgba(2,48,71,.08)]" : "bg-transparent"}`}>
       <nav className="mx-auto max-w-6xl px-5 h-16 flex items-center gap-6">
-        <a href="#top" className="flex items-center gap-2.5 mr-auto md:mr-2">
+        <a href="#top" onClick={goToHash("#top")} className="flex items-center gap-2.5 mr-auto md:mr-2">
           <img src="./logo-mark-256.png" alt="PaintPro" className="w-9 h-9 rounded-[10px]" />
           <span className="font-extrabold text-lg tracking-tight text-navy dark:text-white">
             Paint<span className="text-brand">Pro</span>
@@ -53,7 +70,7 @@ export default function Nav({ dark, onToggleDark, onContact }) {
                   className="absolute left-1/2 -translate-x-1/2 top-full w-[420px] rounded-2xl border border-slate-200 dark:border-[#1a2744] bg-white dark:bg-[#0f1a2e] shadow-[0_20px_50px_rgba(2,48,71,.18)] p-3 grid grid-cols-2 gap-1"
                 >
                   {FEATURE_LINKS.map(f => (
-                    <a key={f.label} href={f.href} onClick={() => setDrop(false)}
+                      <a key={f.label} href={f.href} onClick={goToHash(f.href)}
                        className="flex items-start gap-3 rounded-xl p-3 hover:bg-brand-tint/60 dark:hover:bg-[#162035] transition-colors">
                       <span className="text-xl leading-none mt-0.5">{f.icon}</span>
                       <span>
@@ -66,9 +83,10 @@ export default function Nav({ dark, onToggleDark, onContact }) {
               )}
             </AnimatePresence>
           </div>
-          <a href="#compare" className={link}>Compare</a>
-          <a href="#pricing" className={link}>Pricing</a>
-          <a href="#mobile" className={link}>Mobile App</a>
+          <a href="#compare" onClick={goToHash("#compare")} className={link}>Compare</a>
+          <a href="#savings" onClick={goToHash("#savings")} className={link}>Savings</a>
+          <a href="#pricing" onClick={goToHash("#pricing")} className={link}>Pricing</a>
+          <a href="#mobile" onClick={goToHash("#mobile")} className={link}>Mobile App</a>
         </div>
 
         {/* Right cluster */}
@@ -96,8 +114,8 @@ export default function Nav({ dark, onToggleDark, onContact }) {
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
             className="md:hidden overflow-hidden bg-white dark:bg-[#0f1a2e] border-t border-slate-100 dark:border-[#1a2744]">
             <div className="px-5 py-4 flex flex-col gap-1">
-              {[["#features", "Features"], ["#compare", "Compare"], ["#pricing", "Pricing"], ["#mobile", "Mobile App"]].map(([h, l]) => (
-                <a key={h} href={h} onClick={() => setOpen(false)} className="py-2.5 text-[15px] font-semibold text-navy dark:text-slate-200">{l}</a>
+              {[["#features", "Features"], ["#compare", "Compare"], ["#savings", "Savings"], ["#pricing", "Pricing"], ["#mobile", "Mobile App"]].map(([h, l]) => (
+                <a key={h} href={h} onClick={goToHash(h, true)} className="py-2.5 text-[15px] font-semibold text-navy dark:text-slate-200">{l}</a>
               ))}
               <div className="flex gap-3 pt-3 border-t border-slate-100 dark:border-[#1a2744] mt-2">
                 <a href="/paintpro/" className="flex-1 text-center rounded-xl border-2 border-slate-200 dark:border-[#1a2744] py-2.5 text-sm font-bold text-navy dark:text-white">Log In</a>

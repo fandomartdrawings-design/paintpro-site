@@ -7,6 +7,7 @@ import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
 import Features from "./components/Features.jsx";
 import Comparison from "./components/Comparison.jsx";
+import SavingsCalculator from "./components/SavingsCalculator.jsx";
 import Pricing from "./components/Pricing.jsx";
 import MobilePreview from "./components/MobilePreview.jsx";
 import ContactModal from "./components/ContactModal.jsx";
@@ -156,6 +157,7 @@ export default function App() {
         <ProblemSolution />
         <Features />
         <Comparison />
+        <SavingsCalculator />
         <Pricing onContact={() => setContact(true)} />
         <Testimonials />
         <MobilePreview />
