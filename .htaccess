@@ -1,0 +1,22 @@
+# PaintPro Marketing Site — Apache serving for the local/ZeroTier web wrapper.
+# Vercel builds and serves dist/ itself and ignores this file entirely, so this
+# only affects the copy served by XAMPP Apache (localhost + ZeroTier crew IP).
+#
+# The site is a built Vite app living in dist/. We serve that as the web root,
+# EXCEPT for /api/* which must hit the standalone leads.php at the folder root.
+RewriteEngine On
+RewriteBase /paintpro-site/
+
+# Keep the API endpoint reachable at /paintpro-site/api/... (not rewritten to dist)
+RewriteRule ^api/ - [L]
+
+# Don't re-rewrite anything already pointed at dist/
+RewriteRule ^dist/ - [L]
+
+# If the request maps to a real file/dir inside dist/, serve that file from dist/
+RewriteCond %{DOCUMENT_ROOT}/paintpro-site/dist/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/paintpro-site/dist/$1 -d
+RewriteRule ^(.*)$ dist/$1 [L]
+
+# SPA fallback: everything else returns the built index
+RewriteRule ^ dist/index.html [L]
