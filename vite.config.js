@@ -1,26 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { resolve } from 'path'
 
-// Same deploy pattern as the PaintPro app: build in place, Apache serves the
-// folder, index.html at the root hand-references ./assets/index.js?v=…
+// Standard Vite HTML-entry build. index.html is the entry point; Vite rewrites
+// the <script>/<link> tags to hashed files in dist/ at build time. This is what
+// Vercel expects (a clean dist/ with a complete index.html). base:'./' keeps
+// asset URLs relative so the same dist/ can also be served from a subpath.
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: './',
   build: {
-    outDir: 'assets',
-    emptyOutDir: false,
-    rollupOptions: {
-      input: resolve(__dirname, 'src/main.jsx'),
-      output: {
-        entryFileNames: 'index.js',
-        chunkFileNames: 'chunk-[hash].js',
-        assetFileNames: (info) => {
-          if (info.name && info.name.endsWith('.css')) return 'index.css'
-          return '[name]-[hash][extname]'
-        }
-      }
-    }
-  }
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
 })
