@@ -8,6 +8,7 @@ import Hero from "./components/Hero.jsx";
 import Features from "./components/Features.jsx";
 import Comparison from "./components/Comparison.jsx";
 import WhyPaintPro from "./components/WhyPaintPro.jsx";
+import OurStory from "./components/OurStory.jsx";
 import SavingsCalculator from "./components/SavingsCalculator.jsx";
 import Pricing from "./components/Pricing.jsx";
 import MobilePreview from "./components/MobilePreview.jsx";
@@ -165,6 +166,7 @@ export default function App() {
         <SavingsCalculator />
         <Pricing onContact={() => setContact(true)} />
         <Testimonials />
+        <OurStory />
         <MobilePreview />
         <CTABanner onContact={() => setContact(true)} />
       </main>

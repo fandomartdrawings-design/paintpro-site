@@ -6,7 +6,7 @@ import React from "react";
 
 const COLS = [
   { h: "Product", links: [["Features", "#features"], ["Compare", "#compare"], ["Why PaintPro", "#why-paintpro"], ["Savings", "#savings"], ["Pricing", "#pricing"], ["Mobile App", "#mobile"]] },
-  { h: "Company", links: [["Our Story", "#story"], ["Contact", "#pricing"], ["Log In", "/paintpro/"]] },
+  { h: "Company", links: [["Our Story", "#our-story"], ["Contact", "#pricing"], ["Log In", "/paintpro/"]] },
   { h: "Trust", links: [["Your data, your server", "#mobile"], ["Encrypted crew network", "#mobile"], ["No per-user fees", "#pricing"]] },
 ];
 
