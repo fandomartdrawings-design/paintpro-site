@@ -1,12 +1,17 @@
 # Deploy & Sync Checklist
 
+## Site structure (ForgeField rebrand, July 2026)
+The site is now the ForgeField company site with client-side routes:
+`/` (ForgeField home) · `/paintpro` (product page) · `/privacy` · `/terms`.
+Because routes need absolute asset URLs, vite.config.js uses `base: '/'` —
+the built dist/ no longer works from a subpath like /paintpro-site/ on XAMPP.
+
 ## After ANY change to src/ in paintpro-site
-- [ ] `npm run build` locally — refreshes dist/ for the XAMPP/ZeroTier copy.
-      dist/ is gitignored; Apache serves whatever's currently built, regardless
-      of git status.
-- [ ] Verify at http://localhost/paintpro-site/ before pushing.
-- [ ] `git push` — Vercel auto-builds its OWN dist/ from source on push. No
-      local action needed for Vercel; it never reads your locally-built dist/.
+- [ ] `npm run build` locally.
+- [ ] Verify with `npm run preview` (http://localhost:4173) — NOT the old
+      http://localhost/paintpro-site/ URL, which breaks under base '/'.
+- [ ] `git push` — Vercel auto-builds from source on push (vercel.json has
+      the SPA rewrite so /paintpro etc. resolve). Live at forgefield.company.
 
 ## API contract changes only (rare)
 - [ ] The Android app and main PaintPro app don't currently call paintpro-site's
