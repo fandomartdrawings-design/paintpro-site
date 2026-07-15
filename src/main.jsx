@@ -1,10 +1,15 @@
 /**
- * PaintPro Marketing Site
- * Copyright © 2026 Ryan William Hill. All rights reserved.
+ * ForgeField — entry
+ * Copyright © 2026 ForgeField. All rights reserved.
  */
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 
-createRoot(document.getElementById("root")).render(<App />);
+createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
